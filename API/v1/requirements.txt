@@ -2,5 +2,4 @@ pandas
 fastapi
 scikit-learn
 regex
-os-sys
 uvicorn[standard]
