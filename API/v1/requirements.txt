@@ -1,4 +1,6 @@
 pandas
 fastapi
 scikit-learn
+re
+os
 uvicorn[standard]
