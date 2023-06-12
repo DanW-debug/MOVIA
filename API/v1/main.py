@@ -10,8 +10,8 @@ app = FastAPI()
 csv_path = "../../Data_Repository/movies_finalversion.csv"
 
 # Loading the dataset
-df_movies = pd.read_csv(csv_path, low_memory=False, encoding='latin-1', sep=',',  parse_dates=['release_date'])
-
+#df_movies = pd.read_csv(csv_path, low_memory=False, encoding='latin-1', sep=',',  parse_dates=['release_date'])
+df_movies = data
 # End point functions
 
 @app.get("/")
