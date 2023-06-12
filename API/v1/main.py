@@ -6,10 +6,8 @@ from ML_Code import *
 
 app = FastAPI()
 
-with open('environment.cfg', 'r') as file:
-    config_content = file.read()
 
-csv_path = config_content.strip()
+csv_path = "../../Data_Repository/movies_finalversion.csv"
 
 # Loading the dataset
 df_movies = pd.read_csv(csv_path, low_memory=False, encoding='latin-1', sep=',',  parse_dates=['release_date'])
