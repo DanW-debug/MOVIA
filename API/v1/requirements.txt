@@ -1,6 +1,6 @@
 pandas
 fastapi
 scikit-learn
-re
+regex
 os
 uvicorn[standard]
