@@ -18,6 +18,12 @@ df_movies = pd.read_csv(csv_path, low_memory=False, encoding='latin-1', sep=',',
 def root():
     return {"message": "Hello, World!"}
 
+# Obtener las recomendaciones para una película específica
+@app.get("/api/v1/get_recommended_movies/{movie_title}")
+def get_recommended_movies(movie_title: str):
+    recommendations = get_recommendations(movie_title, knn, data)
+    return(recommendations)
+
 @app.get("/api/v1/shoots_per_month/{month}")
 def shoots_per_month(month: int):
     df1= df_movies[df_movies["release_date"].dt.month == month]
@@ -60,11 +66,6 @@ def get_director(director: str):
     return [director, revenue, response]
 
 
-# Obtener las recomendaciones para una película específica
-@app.get("/api/v1/get_recommended_movies/{movie_title}")
-def get_recommended_movies(movie_title: str):
-    recommendations = get_recommendations(movie_title, knn, data)
-    return(recommendations)
 
 
 

@@ -7,16 +7,8 @@ from sklearn.neighbors import NearestNeighbors
 import re
 from sklearn.feature_extraction.text import CountVectorizer
 
-# Configuration setups
-pd.set_option('display.max_columns', None)
-#pd.set_option('display.max_rows', None)
-pd.set_option('display.max_colwidth', None)
-
-
 # Loading the dataset
-
-# Loading the dataset
-data = pd.read_csv('C:/Users/edmun/OneDrive/Documentos/Soy Henry/LABS Individuales/PI-1_Deployment/MOVIA/Data_Repository/movies_finalversion.csv', low_memory=False, encoding='latin-1', sep=',')
+data = pd.read_csv('../../Data_Repository/movies_finalversion.csv', low_memory=False, encoding='latin-1', sep=',')
 
 #Choosing different sets of features
 data_full = data [['title', 'belongs_to_collection', 'original_language', 'genres', 'overview', 'popularity', 'production_companies', 'production_countries', 'release_date', 'actors', 'director']]
@@ -41,11 +33,8 @@ def stemming_tokenizer2(str_input):
 
 count_vectorizer = CountVectorizer(stop_words='english', min_df=0.0005, max_features=2000)
 X = count_vectorizer.fit_transform(corpus)
-print(count_vectorizer.get_feature_names_out())
 
 movie_0 = pd.DataFrame(X.toarray(), columns=count_vectorizer.get_feature_names_out())
-
-movie_0
 
 # Crear el modelo de vecinos más cercanos
 knn = NearestNeighbors(metric='cosine', algorithm='brute')
@@ -65,11 +54,11 @@ def get_recommendations(title, knn_model, data, num_recommendations=5):
     return data['title'].iloc[movie_indices]
 
 # Obtener las recomendaciones para una película específica
-movie_title = "Star Wars"
-recommendations = get_recommendations(movie_title, knn, data)
+#movie_title = "Star Wars"
+#recommendations = get_recommendations(movie_title, knn, data)
 
 # Imprimir las recomendaciones
-print("Recomendaciones para", movie_title)
-print(recommendations)
+#print("Recomendaciones para", movie_title)
+#print(recommendations)
 
 
