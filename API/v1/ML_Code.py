@@ -5,10 +5,13 @@
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 import re
+import os
 from sklearn.feature_extraction.text import CountVectorizer
 
+csv_path = os.path.join(os.path.dirname(__file__), '..', '..', 'Data_Repository', 'movies_finalversion.csv')
+
 # Loading the dataset
-data = pd.read_csv('../../Data_Repository/movies_finalversion.csv', low_memory=False, encoding='latin-1', sep=',')
+data = pd.read_csv(csv_path, low_memory=False, encoding='latin-1', sep=',')
 
 #Choosing different sets of features
 data_full = data [['title', 'belongs_to_collection', 'original_language', 'genres', 'overview', 'popularity', 'production_companies', 'production_countries', 'release_date', 'actors', 'director']]
