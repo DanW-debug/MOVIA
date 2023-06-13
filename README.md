@@ -58,5 +58,19 @@ The "frontend.py" file contains the frontend code for the MOVIA project's user i
 
 The "frontend.py" file serves as the user interface for the MOVIA project, allowing users to interact with the application and retrieve information from the backend API. It utilizes the Streamlit library to create a user-friendly and interactive experience.
 
+The "ML_Code.py" file contains the machine learning code used in the MOVIA project. It includes functions and utilities related to data processing, model training, and recommendation generation. Let's go through the main components of the file:
+
+    Importing libraries: The necessary libraries for data processing and machine learning are imported. These include pandas for data manipulation, NumPy for numerical computations, and scikit-learn for machine learning algorithms.
+
+    Data preprocessing functions: The file includes functions for loading and preprocessing the movie dataset. For example, the function load_dataset() reads the movie data from a CSV file and returns a pandas DataFrame. Other functions perform tasks such as handling missing values, encoding categorical variables, and scaling numerical features.
+
+    Model training and evaluation: The file contains functions for training and evaluating machine learning models. It includes a function like train_model() that takes the preprocessed data, splits it into training and testing sets, fits a machine learning model on the training data, and returns the trained model. The evaluation function assesses the model's performance using metrics such as accuracy, precision, and recall.
+
+    Recommendation generation: The file includes functions for generating movie recommendations based on user input. It may use techniques like collaborative filtering or content-based filtering to recommend movies similar to the ones specified by the user. The specific recommendation algorithm and implementation depend on the project's requirements.
+
+    Utility functions: The file may contain additional utility functions that support data processing or model training. These functions could include feature engineering, data visualization, or any other tasks relevant to the machine learning pipeline.
+
+The "ML_Code.py" file serves as the core machine learning module for the MOVIA project. It provides functions for data preprocessing, model training, and recommendation generation. This code can be utilized by the backend API to process user requests, apply machine learning algorithms, and return movie recommendations based on the input data.
+
 
 
