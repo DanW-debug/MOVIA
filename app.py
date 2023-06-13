@@ -76,8 +76,8 @@ def get_recommended_movies(movie_title: str):
 
 
 
-    else:
-        st.error("Error al obtener las películas recomendadas")
+   # else:
+    #    st.error("Error al obtener las películas recomendadas")
 
 
 def main():
