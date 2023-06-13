@@ -61,6 +61,7 @@ def get_recommended_movies(movie_title: str):
     st.write("msg received")
     if response.status_code == 200:
         st.write("Response: ", response.text)
+        st.write("Response: ", response.headers)
         #recommended_movies = response.json()
         #return recommended_movies
         return "HOLA"
