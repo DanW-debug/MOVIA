@@ -7,7 +7,7 @@ import streamlit as st
 import uvicorn
 import logging
 
-# Configurar el registro
+# Starting up logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 

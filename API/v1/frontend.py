@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------\
 # MOVIA                                                                 #
-# Movie Statistics & Recommender System                                 #
+# Movie Statistics & Recommender System - Frontend Side                 #
 #                                                                       #
 #-----------------------------------------------------------------------/
 import streamlit as st
@@ -9,7 +9,7 @@ import subprocess
 
 API_URL = "http://localhost"  
 
-# Iniciar el servidor FastAPI usando uvicorn
+# Starting FastAPI server using uvicorn
 def start_fastapi_server():
     command = "uvicorn backend:app --host 0.0.0.0 --port 8080"
     subprocess.Popen(command, shell=True)
@@ -21,7 +21,7 @@ def get_shoots_per_month(month: int ):
         count = response.json()
         return count
     else:
-        st.error("Error al obtener los disparos por mes")
+        st.error("Error getting shoots per month")
 
 def get_shoots_per_day(day: int):
     response = requests.get(f"{API_URL}/api/v1/shoots_per_day/{day}")
@@ -29,7 +29,7 @@ def get_shoots_per_day(day: int):
         count = response.json()
         return count
     else:
-        st.error("Error al obtener los disparos por día")
+        st.error("Error getting shoots per day")
 
 def get_title_score(title: str):
     response = requests.get(f"{API_URL}/api/v1/title_score/{title}")
@@ -37,7 +37,7 @@ def get_title_score(title: str):
         title_data = response.json()
         return title_data
     else:
-        st.error("Error al obtener la puntuación del título")
+        st.error("Error getting title score")
 
 def get_title_votes(title: str):
     response = requests.get(f"{API_URL}/api/v1/title_votes/{title}")
@@ -45,7 +45,7 @@ def get_title_votes(title: str):
         title_votes = response.json()
         return title_votes
     else:
-        st.error("Error al obtener los votos del título")
+        st.error("Error getting title votes")
 
 def get_actor(actor: str):
     response = requests.get(f"{API_URL}/api/v1/actor/{actor}")
@@ -53,7 +53,7 @@ def get_actor(actor: str):
         actor_data = response.json()
         return actor_data
     else:
-        st.error("Error al obtener los datos del actor")
+        st.error("Error getting actor data")
 
 def get_director(director: str):
     response = requests.get(f"{API_URL}/api/v1/director/{director}")
@@ -61,66 +61,59 @@ def get_director(director: str):
         director_data = response.json()
         return director_data
     else:
-        st.error("Error al obtener los datos del director")
+        st.error("Error getting director data")
 
 def get_recommended_movies(movie_title: str):
     response = requests.get(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
-    st.write(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
-    st.write("msg received")
     if response.status_code == 200:
-        st.write("STATUS 200")
-        st.write("Response: ", response.text)
-        #st.write("Response: ", response.headers)
         backendmsg = response.text
-        #return recommended_movies
-        #return "HOLA"
         if backendmsg.get("status") == "success":
             recommended_movies = backendmsg.get("data", {}).get("recommended_movies")
             return(recommended_movies)
         else:
-            st.error("No se pudo obtener las recomendaciones de películas.")
+            st.error("Can't get movie recommendations.")
     else:
-            st.error("Ocurrió un error al obtener las recomendaciones de películas.")
+            st.error("Error during movie requests")
 
 def main():
-    # Título de la página
-    st.title("Mi Aplicación con Streamlit y FastAPI")
+    # Page Title
+    st.title("MOVIA Movie statistics and Recommender System built with Streamlit and FastAPI")
     
- # Iniciar el servidor FastAPI en segundo plano
+ # Start FastAPI server in background
     #start_fastapi_server()
 
     st.write("Loading backend process...")
 
-    movie = st.text_input("Ingrese el título de una película:")
-    if st.button("Obtener recomendaciones:"):
+    movie = st.text_input("Input movie title:")
+    if st.button("Getting recommendations:"):
         recommendations = get_recommended_movies(movie)
         st.success(f"Recommended movies: {recommendations}")
     
-    month = st.number_input("Ingrese un mes:",min_value=1, max_value=12, step=1, format="%d")
+    month = st.number_input("Input a month number:",min_value=1, max_value=12, step=1, format="%d")
     month = int(month)
-    if st.button("Obtener disparos por mes"):
+    if st.button("Getting shoots per month"):
         count = get_shoots_per_month(month)
-        st.success(f"Disparos por mes: {count}")
+        st.success(f"Shoots per month: {count}")
 
-    day = st.number_input("Ingrese un día:",min_value=1, max_value=31, step=1, format="%d")
+    day = st.number_input("Input a day number:",min_value=1, max_value=31, step=1, format="%d")
     day = int(day)
-    if st.button("Obtener disparos por día"):
+    if st.button("Getting shoots per day"):
         count = get_shoots_per_day(day)
-        st.success(f"Disparos por día: {count}")
+        st.success(f"Shoots per day: {count}")
     
-    title = st.text_input("Ingrese un título:")
-    if st.button("Obtener puntuación del título"):
+    title = st.text_input("Input a title:")
+    if st.button("Getting title score"):
         title_data = get_title_score(title)
-        st.success(f"Puntuación del título: {title_data}")
+        st.success(f"Title score: {title_data}")
     
-    actor = st.text_input("Ingrese un actor:")
-    if st.button("Obtener datos del actor"):
+    actor = st.text_input("Input an actor name:")
+    if st.button("Geting actor data"):
         actor_data = get_actor(actor)
-        st.success(f"Datos del actor: {actor_data}")
+        st.success(f"Actor data: {actor_data}")
     
-    director = st.text_input("Ingrese un director:")
-    if st.button("Obtener datos del director"):
+    director = st.text_input("Input a director name:")
+    if st.button("Getting director data"):
         director_data = get_director(director)
-        st.success(f"Datos del director: {director_data}")
+        st.success(f"Director data: {director_data}")
     
 
