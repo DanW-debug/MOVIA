@@ -63,6 +63,7 @@ def get_recommended_movies(movie_title: str):
     st.write(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
     st.write("msg received")
     if response.status_code == 200:
+        st.write("STATUS 200")
         #st.write("Response: ", response.text)
         #st.write("Response: ", response.headers)
         backendmsg = response.json()
