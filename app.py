@@ -60,7 +60,7 @@ def get_recommended_movies(movie_title: str):
     response = requests.get(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
     st.write("msg received")
     if response.status_code == 200:
-        st.write("Response: ", response)
+        st.write("Response: ", response.text)
         #recommended_movies = response.json()
         #return recommended_movies
         return "HOLA"
