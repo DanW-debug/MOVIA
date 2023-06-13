@@ -1,7 +1,7 @@
 # API CODE
 
 import pandas as pd
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from ML_Code import *
 import streamlit as st
 
@@ -21,8 +21,10 @@ def root():
 
 # Obtener las recomendaciones para una película específica
 @app.get("/api/v1/get_recommended_movies/{movie_title}")
-def get_recommended_movies(movie_title: str):
-    st.write("get_recommended_movies")
+def get_recommended_movies(movie_title: str, request:Request):
+    st.write(request.headers)
+    st.write(request.method)
+    st.write(request.url)
     recommendations = get_recommendations(movie_title, knn, data)
     st.write(recommendations)
     return(recommendations)
