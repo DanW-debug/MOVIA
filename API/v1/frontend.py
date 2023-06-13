@@ -87,7 +87,7 @@ def main():
     st.title("Mi Aplicación con Streamlit y FastAPI")
     
  # Iniciar el servidor FastAPI en segundo plano
-    start_fastapi_server()
+    #start_fastapi_server()
 
     st.write("Loading backend process...")
 
