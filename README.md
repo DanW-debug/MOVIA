@@ -21,4 +21,23 @@ Here's a general overview of the notebook's flow:
 
 The notebook contains both code cells and explanatory text cells, making it easier to understand each step of the ETL process.
 
+The "backend.py" file contains the backend code for the MOVIA project's API. It is responsible for handling incoming requests, processing data, and returning responses. Let's walk through the main components of the file:
+
+    Importing libraries: The necessary libraries are imported, including pandas for data manipulation, FastAPI for creating the API endpoints, and uvicorn for running the FastAPI application.
+
+    Loading the dataset: A dataset, typically a CSV file, is loaded using the pandas library. The data is stored in a DataFrame, which allows for easy data manipulation and analysis.
+
+    API endpoint functions: Several functions are defined as API endpoints using the FastAPI decorators. These functions correspond to different routes that the API can handle. For example:
+        The root endpoint ("/") returns a simple "Hello, World!" message.
+        The "/api/v1/get_recommended_movies/{movie_title}" endpoint receives a movie title as a parameter and returns recommended movies based on that title.
+        Other endpoints handle tasks such as retrieving movie counts per month, per day, querying movie details, and so on.
+
+    Data processing: Within the API endpoint functions, the loaded dataset is manipulated and processed as required. This may involve filtering data, performing calculations, querying specific information, or any other data-related operations.
+
+    Returning responses: After processing the data, the API endpoint functions return responses in the form of JSON objects. These responses may include status indicators, data results, or error messages, depending on the nature of the endpoint.
+
+    Running the application: Finally, the FastAPI application is run using the uvicorn library. The application listens for incoming requests and handles them according to the defined API endpoints.
+
+The "backend.py" file serves as the core of the backend infrastructure for the MOVIA project, enabling data processing and providing a web API for client applications to interact with.
+
 
