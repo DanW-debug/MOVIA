@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 import re
 import os
+import streamlit as st
 from sklearn.feature_extraction.text import CountVectorizer
 
 csv_path = os.path.join(os.path.dirname(__file__), '..', '..', 'Data_Repository', 'movies_finalversion.csv')
@@ -61,7 +62,7 @@ movie_title = "Star Wars"
 recommendations = get_recommendations(movie_title, knn, data)
 
 # Imprimir las recomendaciones
-print("Recomendaciones para", movie_title)
-print(recommendations)
+st.write("Recomendaciones para", movie_title)
+st.write(recommendations)
 
 
