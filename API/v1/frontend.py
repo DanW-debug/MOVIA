@@ -11,7 +11,7 @@ API_URL = "http://localhost"
 
 # Iniciar el servidor FastAPI usando uvicorn
 def start_fastapi_server():
-    command = "uvicorn API/v1/xbackend:app --host 0.0.0.0 --port 8051"
+    command = "uvicorn backend:app --host 0.0.0.0 --port 8051"
     subprocess.Popen(command, shell=False)
 
 
