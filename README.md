@@ -40,4 +40,23 @@ The "backend.py" file contains the backend code for the MOVIA project's API. It 
 
 The "backend.py" file serves as the core of the backend infrastructure for the MOVIA project, enabling data processing and providing a web API for client applications to interact with.
 
+The "frontend.py" file contains the frontend code for the MOVIA project's user interface. It is responsible for creating a web-based application using the Streamlit library, interacting with the backend API, and displaying the results to the user. Let's walk through the main components of the file:
+
+    Importing libraries: The necessary libraries are imported, including Streamlit for building the user interface and making API requests, and the requests library for sending HTTP requests to the backend API.
+
+    API communication functions: Several functions are defined to communicate with the backend API and retrieve data. These functions use the requests library to send HTTP requests to the appropriate API endpoints. For example:
+        Functions like get_shoots_per_month and get_shoots_per_day send requests to endpoints that retrieve movie shoot counts per month and per day, respectively.
+        Other functions handle tasks such as retrieving title scores, actor details, director details, and recommended movies.
+
+    User interface creation: Using the Streamlit library, the user interface is built by defining interactive elements such as input fields, buttons, and text displays. These elements allow the user to input data or trigger actions.
+
+    Data retrieval and display: When the user interacts with the user interface elements, the corresponding functions for API communication are called to retrieve data from the backend API. The retrieved data is then displayed to the user using Streamlit's text or visualization components.
+
+    Error handling: The frontend code includes error handling logic to handle cases where the API requests fail or return errors. In such cases, appropriate error messages are displayed to the user using Streamlit's error display components.
+
+    Application execution: The main function main() is called to start the Streamlit application. This function defines the layout and behavior of the user interface.
+
+The "frontend.py" file serves as the user interface for the MOVIA project, allowing users to interact with the application and retrieve information from the backend API. It utilizes the Streamlit library to create a user-friendly and interactive experience.
+
+
 
