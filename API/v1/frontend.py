@@ -12,7 +12,7 @@ API_URL = "http://localhost"
 # Iniciar el servidor FastAPI usando uvicorn
 def start_fastapi_server():
     command = "uvicorn backend:app --host 0.0.0.0 --port 8051"
-    subprocess.Popen(command, shell=False)
+    subprocess.Popen(command, shell=True)
 
 
 def get_shoots_per_month(month: int ):
@@ -82,19 +82,14 @@ def get_recommended_movies(movie_title: str):
     else:
             st.error("Ocurrió un error al obtener las recomendaciones de películas.")
 
-
-
-
-   # else:
-    #    st.error("Error al obtener las películas recomendadas")
-
-
 def main():
     # Título de la página
     st.title("Mi Aplicación con Streamlit y FastAPI")
     
  # Iniciar el servidor FastAPI en segundo plano
     start_fastapi_server()
+
+    st.write("Loading backend process...")
 
     movie = st.text_input("Ingrese el título de una película:")
     if st.button("Obtener recomendaciones:"):
