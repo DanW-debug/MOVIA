@@ -12,7 +12,7 @@ API_URL = "http://localhost"
 # Iniciar el servidor FastAPI usando uvicorn
 def start_fastapi_server():
     command = "uvicorn API/v1/xbackend:app --host 0.0.0.0 --port 8080"
-    subprocess.Popen(command, shell=True)
+    #subprocess.Popen(command, shell=True)
 
 
 def get_shoots_per_month(month: int ):
@@ -129,5 +129,3 @@ def main():
         st.success(f"Datos del director: {director_data}")
     
 
-if __name__ == "__main__":
-    main()
