@@ -7,7 +7,7 @@ import streamlit as st
 import request
 import subprocess
 
-API_URL = "https://danw-debug-movia-apiv1main-bclc2u.streamlit.app"  # Reemplaza con la URL de tu servidor FastAPI
+API_URL = "http://localhost"  
 
 # Iniciar el servidor FastAPI usando uvicorn
 def start_fastapi_server():

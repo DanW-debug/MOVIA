@@ -4,3 +4,4 @@ scikit-learn
 regex
 nltk
 uvicorn[standard]
+streamlit==1.23.1
