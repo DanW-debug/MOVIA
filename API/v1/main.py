@@ -23,6 +23,7 @@ def root():
 @app.get("/api/v1/get_recommended_movies/{movie_title}")
 def get_recommended_movies(movie_title: str):
     recommendations = get_recommendations(movie_title, knn, data)
+    st.write(recommendations)
     return(recommendations)
 
 @app.get("/api/v1/shoots_per_month/{month}")
