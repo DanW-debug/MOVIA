@@ -26,7 +26,13 @@ def get_recommended_movies(movie_title: str, request:Request):
     st.write(movie_title)
     recommendations = get_recommendations(movie_title, knn, data)
     st.write(recommendations)
-    return(recommendations)
+    #return(recommendations)
+    return {
+        "status": "success",
+        "data": {
+            "recommended_movies": recommendations
+        }
+    }
 
 @app.get("/api/v1/shoots_per_month/{month}")
 def shoots_per_month(month: int):
