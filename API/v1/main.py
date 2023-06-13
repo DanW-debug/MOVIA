@@ -5,6 +5,11 @@ from fastapi import FastAPI, Request
 from ML_Code import *
 import streamlit as st
 import uvicorn
+import logging
+
+# Configurar el registro
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
@@ -22,10 +27,10 @@ def root():
 
 # Obtener las recomendaciones para una película específica
 @app.get("/api/v1/get_recommended_movies/{movie_title}")
-def get_recommended_movies(movie_title: str, request:Request):
-    st.write(movie_title)
+def get_recommended_movies(movie_title: str):
+    logger.debug(f"Recibida solicitud para obtener películas recomendadas: {movie_title}")
     recommendations = get_recommendations(movie_title, knn, data)
-    st.write(recommendations)
+    logger.debug(f"Recomendaciones obtenidas: {recommendations}")
     #return(recommendations)
     return {
         "status": "success",
