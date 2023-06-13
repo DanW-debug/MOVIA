@@ -28,9 +28,9 @@ def root():
 # Obtener las recomendaciones para una película específica
 @app.get("/api/v1/get_recommended_movies/{movie_title}")
 def get_recommended_movies(movie_title: str):
-    logger.debug(f"Recibida solicitud para obtener películas recomendadas: {movie_title}")
+    logger.debug("Recibida solicitud para obtener películas recomendadas: %s",movie_title)
     recommendations = get_recommendations(movie_title, knn, data)
-    logger.debug(f"Recomendaciones obtenidas: {recommendations}")
+    logger.debug("Recomendaciones obtenidas: %s", recommendations)
     #return(recommendations)
     return {
         "status": "success",
