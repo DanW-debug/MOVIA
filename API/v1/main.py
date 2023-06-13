@@ -22,6 +22,7 @@ def root():
 # Obtener las recomendaciones para una película específica
 @app.get("/api/v1/get_recommended_movies/{movie_title}")
 def get_recommended_movies(movie_title: str):
+    st.write("get_recommended_movies")
     recommendations = get_recommendations(movie_title, knn, data)
     st.write(recommendations)
     return(recommendations)
