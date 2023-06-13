@@ -4,7 +4,7 @@
 #                                                                       #
 #-----------------------------------------------------------------------/
 import streamlit as st
-import request
+import requests
 import subprocess
 
 API_URL = "http://localhost"  
@@ -16,7 +16,7 @@ def start_fastapi_server():
 
 
 def get_shoots_per_month(month: int ):
-    response = request.get(f"{API_URL}/api/v1/shoots_per_month/{month}")
+    response = requests.get(f"{API_URL}/api/v1/shoots_per_month/{month}")
     if response.status_code == 200:
         count = response.json()
         return count
@@ -24,7 +24,7 @@ def get_shoots_per_month(month: int ):
         st.error("Error al obtener los disparos por mes")
 
 def get_shoots_per_day(day: int):
-    response = request.get(f"{API_URL}/api/v1/shoots_per_day/{day}")
+    response = requests.get(f"{API_URL}/api/v1/shoots_per_day/{day}")
     if response.status_code == 200:
         count = response.json()
         return count
@@ -32,7 +32,7 @@ def get_shoots_per_day(day: int):
         st.error("Error al obtener los disparos por día")
 
 def get_title_score(title: str):
-    response = request.get(f"{API_URL}/api/v1/title_score/{title}")
+    response = requests.get(f"{API_URL}/api/v1/title_score/{title}")
     if response.status_code == 200:
         title_data = response.json()
         return title_data
@@ -40,7 +40,7 @@ def get_title_score(title: str):
         st.error("Error al obtener la puntuación del título")
 
 def get_title_votes(title: str):
-    response = request.get(f"{API_URL}/api/v1/title_votes/{title}")
+    response = requests.get(f"{API_URL}/api/v1/title_votes/{title}")
     if response.status_code == 200:
         title_votes = response.json()
         return title_votes
@@ -48,7 +48,7 @@ def get_title_votes(title: str):
         st.error("Error al obtener los votos del título")
 
 def get_actor(actor: str):
-    response = request.get(f"{API_URL}/api/v1/actor/{actor}")
+    response = requests.get(f"{API_URL}/api/v1/actor/{actor}")
     if response.status_code == 200:
         actor_data = response.json()
         return actor_data
@@ -56,7 +56,7 @@ def get_actor(actor: str):
         st.error("Error al obtener los datos del actor")
 
 def get_director(director: str):
-    response = request.get(f"{API_URL}/api/v1/director/{director}")
+    response = requests.get(f"{API_URL}/api/v1/director/{director}")
     if response.status_code == 200:
         director_data = response.json()
         return director_data
@@ -64,7 +64,7 @@ def get_director(director: str):
         st.error("Error al obtener los datos del director")
 
 def get_recommended_movies(movie_title: str):
-    response = request.get(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
+    response = requests.get(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
     st.write(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
     st.write("msg received")
     if response.status_code == 200:
@@ -93,6 +93,9 @@ def main():
     # Título de la página
     st.title("Mi Aplicación con Streamlit y FastAPI")
     
+ # Iniciar el servidor FastAPI en segundo plano
+    start_fastapi_server()
+
     movie = st.text_input("Ingrese el título de una película:")
     if st.button("Obtener recomendaciones:"):
         recommendations = get_recommended_movies(movie)
