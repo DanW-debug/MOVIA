@@ -8,6 +8,8 @@ import requests
 
 API_URL = "https://danw-debug-movia-apiv1main-bclc2u.streamlit.app"  # Reemplaza con la URL de tu servidor FastAPI
 
+
+
 def get_shoots_per_month(month: int ):
     response = requests.get(f"{API_URL}/api/v1/shoots_per_month/{month}")
     if response.status_code == 200:
@@ -58,6 +60,7 @@ def get_director(director: str):
 
 def get_recommended_movies(movie_title: str):
     response = requests.get(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
+    st.write(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
     st.write("msg received")
     if response.status_code == 200:
         #st.write("Response: ", response.text)
