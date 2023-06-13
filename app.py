@@ -6,7 +6,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://127.0.0.1:8000"  # Reemplaza con la URL de tu servidor FastAPI
+API_URL = "https://danw-debug-movia-apiv1main-bclc2u.streamlit.app"  # Reemplaza con la URL de tu servidor FastAPI
 
 def get_shoots_per_month(month: int ):
     response = requests.get(f"{API_URL}/api/v1/shoots_per_month/{month}")
