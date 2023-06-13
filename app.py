@@ -58,9 +58,12 @@ def get_director(director: str):
 
 def get_recommended_movies(movie_title: str):
     response = requests.get(f"{API_URL}/api/v1/get_recommended_movies/{movie_title}")
+    st.write("msg received")
     if response.status_code == 200:
-        recommended_movies = response.json()
-        return recommended_movies
+        str.write("Response: ", response)
+        #recommended_movies = response.json()
+        #return recommended_movies
+        return "HOLA"
     else:
         st.error("Error al obtener las películas recomendadas")
 
