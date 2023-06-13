@@ -58,11 +58,11 @@ def get_recommendations(title, knn_model, data, num_recommendations=5):
     return data['title'].iloc[movie_indices]
 
 # Obtener las recomendaciones para una película específica
-movie_title = "Star Wars"
-recommendations = get_recommendations(movie_title, knn, data)
+#movie_title = "Star Wars"
+#recommendations = get_recommendations(movie_title, knn, data)
 
 # Imprimir las recomendaciones
-st.write("Recomendaciones para", movie_title)
-st.write(recommendations)
+#st.write("Recomendaciones para", movie_title)
+#st.write(recommendations)
 
 

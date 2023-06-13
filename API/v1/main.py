@@ -7,14 +7,12 @@ import streamlit as st
 
 app = FastAPI()
 
-st.write("Starting backend services")
-
 csv_path = "../../Data_Repository/movies_finalversion.csv"
 
 # Loading the dataset
 #df_movies = pd.read_csv(csv_path, low_memory=False, encoding='latin-1', sep=',',  parse_dates=['release_date'])
 df_movies = data
-st.write("Dataset in place")
+
 # End point functions
 
 @app.get("/")
